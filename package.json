@@ -1,0 +1,29 @@
+{
+  "name": "web-ext-webpack-plugin",
+  "version": "1.0.0",
+  "description": "A webpack plugin for web-ext",
+  "main": "web-ext-webpack-plugin.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "web",
+    "extensions",
+    "web extensions",
+    "firefox",
+    "mozilla"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hiikezoe/web-ext-webpack-plugin.git"
+  },
+  "author": "Hiroyuki Ikezoe",
+  "license": "MPL-2.0",
+  "bugs": {
+    "url": "https://github.com/hiikezoe/web-ext-webpack-plugin/issues"
+  },
+  "homepage": "https://github.com/hiikezoe/web-ext-webpack-plugin#readme",
+  "dependencies": {
+    "web-ext": "^2.5.0"
+  }
+}
