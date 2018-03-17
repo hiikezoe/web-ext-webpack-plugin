@@ -11,7 +11,7 @@ class WebExtWebpackPlugin {
 
   apply(compiler) {
     const sourceDir = process.cwd();
-    const artifactsDir = path.join(process.cwd(), 'web-ext-artifacts');
+    const artifactsDir = path.join(sourceDir, 'web-ext-artifacts');
 
     const afterEmit = async (compilation) => {
       await webExt.cmd.lint({
