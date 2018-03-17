@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/hiikezoe/web-ext-webpack-plugin#readme",
   "dependencies": {
-    "web-ext": "^2.5.0"
+    "web-ext": "hiikezoe/web-ext#langpack"
   }
 }
