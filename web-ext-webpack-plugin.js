@@ -13,11 +13,8 @@ class WebExtWebpackPlugin {
     const sourceDir = process.cwd();
     const artifactsDir = path.join(process.cwd(), 'web-ext-artifacts');
 
-    const done = async (stats) => {
-      if (stats.hasErrors()) {
-        return;
-      }
-      return webExt.cmd.lint({
+    const afterEmit = async (compilation) => {
+      await webExt.cmd.lint({
         artifactsDir,
         boring: false,
         metadata: false,
@@ -32,9 +29,9 @@ class WebExtWebpackPlugin {
     }
 
     if (compiler.hooks) {
-      compiler.hooks.done.tapPromise({ name: pluginName }, done);
+      compiler.hooks.afterEmit.tapPromise({ name: pluginName }, afterEmit);
     } else {
-      compiler.plugin('done', done);
+      compiler.plugin('afterEmit', afterEmit);
     }
   }
 }
