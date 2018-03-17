@@ -7,6 +7,7 @@ const pluginName = 'WebExtWebpackPlugin';
 
 class WebExtWebpackPlugin {
   constructor() {
+    this.runner = null;
   }
 
   apply(compiler) {
@@ -14,18 +15,41 @@ class WebExtWebpackPlugin {
     const artifactsDir = path.join(sourceDir, 'web-ext-artifacts');
 
     const afterEmit = async (compilation) => {
-      await webExt.cmd.lint({
-        artifactsDir,
-        boring: false,
-        metadata: false,
-        output: 'text',
-        pretty: false,
-        sourceDir,
-        verbose: false,
-        warningsAsErrors: true,
-      }, {
-        shouldExitProgram: false,
-      });
+      try {
+        await webExt.cmd.lint({
+          artifactsDir,
+          boring: false,
+          metadata: false,
+          output: 'text',
+          pretty: false,
+          sourceDir,
+          verbose: false,
+          warningsAsErrors: true,
+        }, {
+          shouldExitProgram: false,
+        });
+
+        if (this.runner) {
+          this.runner.reloadAllExtensions();
+          return;
+        }
+
+        await webExt.cmd.run({
+          sourceDir,
+          artifactsDir,
+          noReload: true,
+        }, { }).then((runner) => this.runner = runner);
+
+        if (!this.runner) {
+          return;
+        }
+
+        this.runner.registerCleanup(() => {
+          this.runner = null;
+        });
+      } catch (err) {
+        console.log(err);
+      }
     }
 
     if (compiler.hooks) {
