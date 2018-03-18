@@ -50,7 +50,7 @@ class WebExtWebpackPlugin {
       } catch (err) {
         console.log(err);
       }
-    }
+    };
 
     if (compiler.hooks) {
       compiler.hooks.afterEmit.tapPromise({ name: pluginName }, afterEmit);
