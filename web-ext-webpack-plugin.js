@@ -6,15 +6,17 @@ const webExt = require('web-ext').default;
 const pluginName = 'WebExtWebpackPlugin';
 
 class WebExtWebpackPlugin {
-  constructor() {
+  constructor({
+    sourceDir = process.cwd(),
+    artifactsDir = path.join(sourceDir, 'web-ext-artifacts')
+  } = {}) {
     this.runner = null;
     this.watchMode = false;
+    this.sourceDir = sourceDir;
+    this.artifactsDir = artifactsDir;
   }
 
   apply(compiler) {
-    const sourceDir = process.cwd();
-    const artifactsDir = path.join(sourceDir, 'web-ext-artifacts');
-
     const watchRun = async (compiler) => {
       this.watchMode = true;
     };
@@ -22,12 +24,12 @@ class WebExtWebpackPlugin {
     const afterEmit = async (compilation) => {
       try {
         await webExt.cmd.lint({
-          artifactsDir,
+          artifactsDir: this.artifactsDir,
           boring: false,
           metadata: false,
           output: 'text',
           pretty: false,
-          sourceDir,
+          sourceDir: this.sourceDir,
           verbose: false,
           warningsAsErrors: true,
         }, {
@@ -44,8 +46,8 @@ class WebExtWebpackPlugin {
         }
 
         await webExt.cmd.run({
-          sourceDir,
-          artifactsDir,
+          sourceDir: this.sourceDir,
+          artifactsDir: this.artifactsDir,
           noReload: true,
         }, { }).then((runner) => this.runner = runner);
 
