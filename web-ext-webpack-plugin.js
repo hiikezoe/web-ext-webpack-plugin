@@ -11,6 +11,7 @@ class WebExtWebpackPlugin {
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
     browserConsole = false,
     firefox,
+    firefoxProfile,
     startUrl
   } = {}) {
     this.runner = null;
@@ -18,6 +19,7 @@ class WebExtWebpackPlugin {
     this.artifactsDir = artifactsDir;
     this.browserConsole = browserConsole,
     this.firefox = firefox;
+    this.firefoxProfile = firefoxProfile;
     this.sourceDir = sourceDir;
     this.startUrl = startUrl;
   }
@@ -56,6 +58,7 @@ class WebExtWebpackPlugin {
           browserConsole: this.browserConsole,
           sourceDir: this.sourceDir,
           firefox: this.firefox,
+          firefoxProfile: this.firefoxProfile,
           startUrl: this.startUrl,
           noReload: true,
         }, { }).then((runner) => this.runner = runner);
