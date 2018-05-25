@@ -8,12 +8,14 @@ const pluginName = 'WebExtWebpackPlugin';
 class WebExtWebpackPlugin {
   constructor({
     sourceDir = process.cwd(),
-    artifactsDir = path.join(sourceDir, 'web-ext-artifacts')
+    artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
+    browserConsole = false
   } = {}) {
     this.runner = null;
     this.watchMode = false;
-    this.sourceDir = sourceDir;
     this.artifactsDir = artifactsDir;
+    this.browserConsole = browserConsole,
+    this.sourceDir = sourceDir;
   }
 
   apply(compiler) {
@@ -46,8 +48,9 @@ class WebExtWebpackPlugin {
         }
 
         await webExt.cmd.run({
-          sourceDir: this.sourceDir,
           artifactsDir: this.artifactsDir,
+          browserConsole: this.browserConsole,
+          sourceDir: this.sourceDir,
           noReload: true,
         }, { }).then((runner) => this.runner = runner);
 
