@@ -25,5 +25,10 @@
   "homepage": "https://github.com/hiikezoe/web-ext-webpack-plugin#readme",
   "dependencies": {
     "web-ext": "^5.5.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "bracketSpacing": true
   }
 }

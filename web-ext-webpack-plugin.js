@@ -12,12 +12,12 @@ class WebExtWebpackPlugin {
     browserConsole = false,
     firefox,
     firefoxProfile,
-    startUrl
+    startUrl,
   } = {}) {
     this.runner = null;
     this.watchMode = false;
     this.artifactsDir = artifactsDir;
-    this.browserConsole = browserConsole,
+    this.browserConsole = browserConsole;
     this.firefox = firefox;
     this.firefoxProfile = firefoxProfile;
     this.sourceDir = sourceDir;
@@ -31,18 +31,21 @@ class WebExtWebpackPlugin {
 
     const afterEmit = async (compilation) => {
       try {
-        await webExt.cmd.lint({
-          artifactsDir: this.artifactsDir,
-          boring: false,
-          metadata: false,
-          output: 'text',
-          pretty: false,
-          sourceDir: this.sourceDir,
-          verbose: false,
-          warningsAsErrors: true,
-        }, {
-          shouldExitProgram: false,
-        });
+        await webExt.cmd.lint(
+          {
+            artifactsDir: this.artifactsDir,
+            boring: false,
+            metadata: false,
+            output: 'text',
+            pretty: false,
+            sourceDir: this.sourceDir,
+            verbose: false,
+            warningsAsErrors: true,
+          },
+          {
+            shouldExitProgram: false,
+          }
+        );
 
         if (!this.watchMode) {
           return;
@@ -53,15 +56,20 @@ class WebExtWebpackPlugin {
           return;
         }
 
-        await webExt.cmd.run({
-          artifactsDir: this.artifactsDir,
-          browserConsole: this.browserConsole,
-          sourceDir: this.sourceDir,
-          firefox: this.firefox,
-          firefoxProfile: this.firefoxProfile,
-          startUrl: this.startUrl,
-          noReload: true,
-        }, { }).then((runner) => this.runner = runner);
+        await webExt.cmd
+          .run(
+            {
+              artifactsDir: this.artifactsDir,
+              browserConsole: this.browserConsole,
+              sourceDir: this.sourceDir,
+              firefox: this.firefox,
+              firefoxProfile: this.firefoxProfile,
+              startUrl: this.startUrl,
+              noReload: true,
+            },
+            {}
+          )
+          .then((runner) => (this.runner = runner));
 
         if (!this.runner) {
           return;
