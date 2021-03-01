@@ -1,7 +1,7 @@
 'use strict';
 
 const path = require('path');
-const webExt = require('web-ext').default;
+const webExt = require('web-ext');
 
 const pluginName = 'WebExtWebpackPlugin';
 
