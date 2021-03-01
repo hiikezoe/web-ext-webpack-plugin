@@ -12,6 +12,8 @@ class WebExtWebpackPlugin {
     browserConsole = false,
     firefox,
     firefoxProfile,
+    keepProfileChanges,
+    profileCreateIfMissing,
     startUrl,
   } = {}) {
     this.runner = null;
@@ -20,6 +22,8 @@ class WebExtWebpackPlugin {
     this.browserConsole = browserConsole;
     this.firefox = firefox;
     this.firefoxProfile = firefoxProfile;
+    this.keepProfileChanges = keepProfileChanges;
+    this.profileCreateIfMissing = profileCreateIfMissing;
     this.sourceDir = sourceDir;
     this.startUrl = startUrl;
   }
@@ -64,6 +68,8 @@ class WebExtWebpackPlugin {
               sourceDir: this.sourceDir,
               firefox: this.firefox,
               firefoxProfile: this.firefoxProfile,
+              keepProfileChanges: this.keepProfileChanges,
+              profileCreateIfMissing: this.profileCreateIfMissing,
               startUrl: this.startUrl,
               noReload: true,
             },
