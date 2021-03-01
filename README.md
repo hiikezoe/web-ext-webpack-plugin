@@ -7,7 +7,7 @@ const WebExtWebpackPlugin = require('web-ext-webpack-plugin');
 
 module.exports = {
   plugins: [
-    new WebExtWebpackPlugin({ sourceDir: './extension-dist' })
+    new WebExtWebpackPlugin({ sourceDir: 'extension-dist' })
   ]
 }
 ```

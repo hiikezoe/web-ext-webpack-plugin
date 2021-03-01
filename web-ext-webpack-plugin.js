@@ -24,7 +24,7 @@ class WebExtWebpackPlugin {
     this.firefoxProfile = firefoxProfile;
     this.keepProfileChanges = keepProfileChanges;
     this.profileCreateIfMissing = profileCreateIfMissing;
-    this.sourceDir = sourceDir;
+    this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
   }
 
