@@ -1,4 +1,4 @@
-# web-ext-webpack-plugin
+# web-ext-plugin
 
 A webpack plugin for running web-ext
 
