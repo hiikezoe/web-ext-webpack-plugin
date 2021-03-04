@@ -5,19 +5,19 @@ A webpack plugin for running web-ext
 ## Basic usage
 
 ```bash
-$ npm install --save-dev web-ext-webpack-plugin
+$ npm install --save-dev web-ext-plugin
 
 # Or for yarn
-$ yarn install -D web-ext-webpack-plugin
+$ yarn install -D web-ext-plugin
 ```
 
 **webpack.config.js**
 
 ```js
-const WebExtWebpackPlugin = require('web-ext-webpack-plugin');
+const WebExtPlugin = require('web-ext-plugin');
 
 module.exports = {
-  plugins: [new WebExtWebpackPlugin({ sourceDir: 'extension-dist' })],
+  plugins: [new WebExtPlugin({ sourceDir: 'extension-dist' })],
 };
 ```
 

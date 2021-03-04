@@ -1,5 +1,5 @@
 {
-  "name": "web-ext-webpack-plugin",
+  "name": "web-ext-plugin",
   "version": "1.0.0",
   "description": "A webpack plugin for web-ext",
   "main": "index.js",
@@ -10,8 +10,10 @@
     "web",
     "extensions",
     "web extensions",
+    "web-ext",
     "firefox",
-    "mozilla"
+    "mozilla",
+    "webpack"
   ],
   "repository": {
     "type": "git",

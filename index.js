@@ -3,9 +3,9 @@
 const path = require('path');
 const webExt = require('web-ext');
 
-const pluginName = 'WebExtWebpackPlugin';
+const pluginName = 'WebExtPlugin';
 
-class WebExtWebpackPlugin {
+class WebExtPlugin {
   constructor({
     sourceDir = process.cwd(),
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
@@ -99,4 +99,4 @@ class WebExtWebpackPlugin {
   }
 }
 
-module.exports = WebExtWebpackPlugin;
+module.exports = WebExtPlugin;

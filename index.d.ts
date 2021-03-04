@@ -1,6 +1,6 @@
 import { Compiler } from 'webpack';
 
-interface WebExtWebpackPluginOptions {
+interface WebExtPluginOptions {
   sourceDir?: string;
   artifactsDir?: string;
   browserConsole?: boolean;
@@ -11,10 +11,10 @@ interface WebExtWebpackPluginOptions {
   startUrl?: string;
 }
 
-class WebExtWebpackPlugin {
-  constructor(params: WebExtWebpackPluginOptions);
+class WebExtPlugin {
+  constructor(params: WebExtPluginOptions);
 
   apply(compiler: Compiler): void;
 }
 
-export = WebExtWebpackPlugin;
+export = WebExtPlugin;
