@@ -8,7 +8,7 @@ A webpack plugin for running web-ext
 $ npm install --save-dev web-ext-plugin
 
 # Or for yarn
-$ yarn install -D web-ext-plugin
+$ yarn add -D web-ext-plugin
 ```
 
 **webpack.config.js**
