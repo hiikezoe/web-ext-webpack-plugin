@@ -64,3 +64,9 @@ module.exports = {
   Defaults to the same folder as the `webpack.config.js` file.  
 
 - `startUrl` (optional) - A URL to load on startup.
+
+- `target` (optional) - One of `firefox-desktop`, `firefox-android`, or `chromium`.
+
+  Defaults to `firefox-desktop`.
+
+  See the documentation for the `--target` option of [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run).
