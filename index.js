@@ -15,6 +15,7 @@ class WebExtPlugin {
     keepProfileChanges,
     profileCreateIfMissing,
     startUrl,
+    target,
   } = {}) {
     this.runner = null;
     this.watchMode = false;
@@ -26,6 +27,7 @@ class WebExtPlugin {
     this.profileCreateIfMissing = profileCreateIfMissing;
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
+    this.target = target;
   }
 
   apply(compiler) {
@@ -66,6 +68,7 @@ class WebExtPlugin {
               artifactsDir: this.artifactsDir,
               browserConsole: this.browserConsole,
               sourceDir: this.sourceDir,
+              target: this.target,
               firefox: this.firefox,
               firefoxProfile: this.firefoxProfile,
               keepProfileChanges: this.keepProfileChanges,

@@ -9,6 +9,7 @@ interface WebExtPluginOptions {
   keepProfileChanges?: boolean;
   profileCreateIfMissing?: boolean;
   startUrl?: string;
+  target?: 'firefox-desktop' | 'firefox-android' | 'chromium';
 }
 
 class WebExtPlugin {
