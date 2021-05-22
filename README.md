@@ -29,8 +29,14 @@ module.exports = {
 
 - `browserConsole` (optional) - A boolean indicating if the browser console
   should be shown on load.
-  
+
   Defaults to false.
+
+- `chromiumBinary` (optional) - A path to a specific version of a Chromium
+  browser to run. The value is an absolute path to the browser executable or an
+  alias string.
+
+- `chromiumProfile` (optional) - A path to a custom Chromium profile to use.
 
 - `firefox` (optional) - A path to a specific version of Firefox to run.
   The value is an absolute path to the Firefox executable or an alias string.
@@ -38,7 +44,6 @@ module.exports = {
 - `firefoxProfile` (optional) - A specific Firefox profile to use.
   This may be either a profile name or the path to a profile directory.
   If this is not set a new profile is generated each time.
-  
 - `keepProfileChanges` (optional) - A boolean value indicating if the profile
   specified by `firefoxProfile`.
 
@@ -55,13 +60,13 @@ module.exports = {
   Note that if this is specified, `firefoxProfile` is treated as meaning a directory path (not a profile name).
 
   Defaults to false.
-  
+
 - `sourceDir` (optional) - The folder where webpack is building your extension
   to.
   Typically this will be where you have configured `output.path` to point to.
   Relative paths will be resolved relative to the `webpack.config.js` file.
-  
-  Defaults to the same folder as the `webpack.config.js` file.  
+
+  Defaults to the same folder as the `webpack.config.js` file.
 
 - `startUrl` (optional) - A URL to load on startup.
 

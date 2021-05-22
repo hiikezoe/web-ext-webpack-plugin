@@ -4,6 +4,8 @@ interface WebExtPluginOptions {
   sourceDir?: string;
   artifactsDir?: string;
   browserConsole?: boolean;
+  chromiumBinary?: string;
+  chromiumProfile?: string;
   firefox?: string;
   firefoxProfile?: string;
   keepProfileChanges?: boolean;

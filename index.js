@@ -10,6 +10,8 @@ class WebExtPlugin {
     sourceDir = process.cwd(),
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
     browserConsole = false,
+    chromiumBinary,
+    chromiumProfile,
     firefox,
     firefoxProfile,
     keepProfileChanges,
@@ -21,6 +23,8 @@ class WebExtPlugin {
     this.watchMode = false;
     this.artifactsDir = artifactsDir;
     this.browserConsole = browserConsole;
+    this.chromiumBinary = chromiumBinary;
+    this.chromiumProfile = chromiumProfile;
     this.firefox = firefox;
     this.firefoxProfile = firefoxProfile;
     this.keepProfileChanges = keepProfileChanges;
@@ -69,6 +73,8 @@ class WebExtPlugin {
               browserConsole: this.browserConsole,
               sourceDir: this.sourceDir,
               target: this.target,
+              chromiumBinary: this.chromiumBinary,
+              chromiumProfile: this.chromiumProfile,
               firefox: this.firefox,
               firefoxProfile: this.firefoxProfile,
               keepProfileChanges: this.keepProfileChanges,
