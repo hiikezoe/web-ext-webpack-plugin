@@ -58,6 +58,17 @@ class WebExtPlugin {
         );
 
         if (!this.watchMode) {
+          await webExt.cmd.build(
+            {
+              artifactsDir: this.artifactsDir,
+              sourceDir: this.sourceDir,
+              overwriteDest: true,
+            },
+            {
+              shouldExitProgram: true,
+            }
+          );
+
           return;
         }
 
