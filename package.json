@@ -28,6 +28,9 @@
   "dependencies": {
     "web-ext": "^6.1.0"
   },
+  "devDependencies": {
+    "@types/webpack": "^5.28.0"
+  },
   "prettier": {
     "singleQuote": true,
     "trailingComma": "es5",

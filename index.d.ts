@@ -1,6 +1,6 @@
 import { Compiler } from 'webpack';
 
-interface WebExtPluginOptions {
+export declare interface WebExtPluginOptions {
   sourceDir?: string;
   artifactsDir?: string;
   browserConsole?: boolean;
@@ -14,10 +14,8 @@ interface WebExtPluginOptions {
   target?: 'firefox-desktop' | 'firefox-android' | 'chromium';
 }
 
-class WebExtPlugin {
+export declare class WebExtPlugin {
   constructor(params: WebExtPluginOptions);
 
   apply(compiler: Compiler): void;
 }
-
-export = WebExtPlugin;
