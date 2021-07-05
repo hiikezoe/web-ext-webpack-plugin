@@ -14,7 +14,7 @@ export declare interface WebExtPluginOptions {
   target?: 'firefox-desktop' | 'firefox-android' | 'chromium';
 }
 
-export declare class WebExtPlugin {
+export default class WebExtPlugin {
   constructor(params: WebExtPluginOptions);
 
   apply(compiler: Compiler): void;
