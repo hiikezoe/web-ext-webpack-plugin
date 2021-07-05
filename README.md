@@ -32,6 +32,13 @@ module.exports = {
 
   Defaults to false.
 
+- `buildPackage` (optional) - A boolean indicating if a zip file of the
+  extension should be generated.
+
+  The name of the .zip file is taken from the name field in the extension manifest unless `outputFilename` is set.
+
+  Defaults to false.
+
 - `chromiumBinary` (optional) - A path to a specific version of a Chromium
   browser to run. The value is an absolute path to the browser executable or an
   alias string.
@@ -52,6 +59,20 @@ module.exports = {
   See the notes for the [`--keep-profile-changes` flag](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run) from the `web-ext run` documentation.
   Specifically, this should not be used together with a profile you later use for browsing.
   It is, however, useful if you want to force the profile in a specific location to be written to (e.g. for testing out-of-disk space situations).
+
+- `outputFilename` (optional) - The name of the .zip file to write when
+  `buildPackage` is true.
+
+  If this is not set the name of the .zip file is taken from the name field in
+  the extension manifest.
+
+- `overwriteDest` (optional) - A boolean value indicating if the package built
+  when `buildPackage` is true, should overwrite an existing package at the same
+  location.
+
+  Without this option, web-ext will exit in error if the destination file already exists.
+
+  Defaults to false.
 
 - `profileCreateIfMissing` (optional) - A boolean value indicating if the
   profile specified by `firefoxProfile` should be created if it does not
