@@ -18,6 +18,9 @@ class WebExtPlugin {
     profileCreateIfMissing,
     startUrl,
     target,
+    buildPackage = false,
+    overwriteDest = false,
+    outputFilename,
   } = {}) {
     this.runner = null;
     this.watchMode = false;
@@ -32,6 +35,9 @@ class WebExtPlugin {
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
     this.target = target;
+    this.buildPackage = buildPackage;
+    this.overwriteDest = overwriteDest;
+    this.outputFilename = outputFilename;
   }
 
   apply(compiler) {
@@ -58,16 +64,19 @@ class WebExtPlugin {
         );
 
         if (!this.watchMode) {
-          await webExt.cmd.build(
-            {
-              artifactsDir: this.artifactsDir,
-              sourceDir: this.sourceDir,
-              overwriteDest: true,
-            },
-            {
-              shouldExitProgram: true,
-            }
-          );
+          if (this.buildPackage) {
+            await webExt.cmd.build(
+              {
+                artifactsDir: this.artifactsDir,
+                sourceDir: this.sourceDir,
+                overwriteDest: this.overwriteDest,
+                filename: this.outputFilename,
+              },
+              {
+                shouldExitProgram: true,
+              }
+            );
+          }
 
           return;
         }

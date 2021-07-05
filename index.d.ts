@@ -12,6 +12,9 @@ export declare interface WebExtPluginOptions {
   profileCreateIfMissing?: boolean;
   startUrl?: string;
   target?: 'firefox-desktop' | 'firefox-android' | 'chromium';
+  buildPackage?: boolean;
+  overwriteDest?: boolean;
+  outputFilename?: string;
 }
 
 export default class WebExtPlugin {
