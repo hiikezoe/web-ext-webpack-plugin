@@ -7,6 +7,7 @@ const pluginName = 'WebExtPlugin';
 
 class WebExtPlugin {
   constructor({
+    sourceDir = process.cwd(),
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
     browserConsole = false,
     buildPackage = false,
@@ -19,7 +20,6 @@ class WebExtPlugin {
     overwriteDest = false,
     profileCreateIfMissing,
     selfHosted = false,
-    sourceDir = process.cwd(),
     startUrl,
     target,
   } = {}) {
