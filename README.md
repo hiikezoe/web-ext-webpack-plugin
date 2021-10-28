@@ -21,6 +21,13 @@ module.exports = {
 };
 ```
 
+Running `webpack` by itself will build the extension, effectively running
+`web-ext build` on the output of your Webpack build.
+
+To run the extension in a browser (including automatic reloading when using
+Firefox), i.e. to run `web-ext run`, you will need to start Webpack in watch
+mode using `webpack -w`.
+
 ## Options
 
 - `artifactsDir` (optional) - The folder where artifacts are built stored.
