@@ -1,20 +1,20 @@
 import { Compiler } from 'webpack';
 
 export declare interface WebExtPluginOptions {
-  sourceDir?: string;
   artifactsDir?: string;
   browserConsole?: boolean;
+  buildPackage?: boolean;
   chromiumBinary?: string;
   chromiumProfile?: string;
   firefox?: string;
   firefoxProfile?: string;
   keepProfileChanges?: boolean;
+  outputFilename?: string;
+  overwriteDest?: boolean;
   profileCreateIfMissing?: boolean;
+  sourceDir?: string;
   startUrl?: string;
   target?: 'firefox-desktop' | 'firefox-android' | 'chromium';
-  buildPackage?: boolean;
-  overwriteDest?: boolean;
-  outputFilename?: string;
 }
 
 export default class WebExtPlugin {

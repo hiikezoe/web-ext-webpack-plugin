@@ -7,37 +7,38 @@ const pluginName = 'WebExtPlugin';
 
 class WebExtPlugin {
   constructor({
-    sourceDir = process.cwd(),
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
     browserConsole = false,
+    buildPackage = false,
     chromiumBinary,
     chromiumProfile,
     firefox,
     firefoxProfile,
     keepProfileChanges,
+    outputFilename,
+    overwriteDest = false,
     profileCreateIfMissing,
+    sourceDir = process.cwd(),
     startUrl,
     target,
-    buildPackage = false,
-    overwriteDest = false,
-    outputFilename,
   } = {}) {
     this.runner = null;
     this.watchMode = false;
+
     this.artifactsDir = artifactsDir;
     this.browserConsole = browserConsole;
+    this.buildPackage = buildPackage;
     this.chromiumBinary = chromiumBinary;
     this.chromiumProfile = chromiumProfile;
     this.firefox = firefox;
     this.firefoxProfile = firefoxProfile;
     this.keepProfileChanges = keepProfileChanges;
+    this.outputFilename = outputFilename;
+    this.overwriteDest = overwriteDest;
     this.profileCreateIfMissing = profileCreateIfMissing;
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
     this.target = target;
-    this.buildPackage = buildPackage;
-    this.overwriteDest = overwriteDest;
-    this.outputFilename = outputFilename;
   }
 
   apply(compiler) {
@@ -68,9 +69,9 @@ class WebExtPlugin {
             await webExt.cmd.build(
               {
                 artifactsDir: this.artifactsDir,
-                sourceDir: this.sourceDir,
-                overwriteDest: this.overwriteDest,
                 filename: this.outputFilename,
+                overwriteDest: this.overwriteDest,
+                sourceDir: this.sourceDir,
               },
               {
                 shouldExitProgram: true,
@@ -91,16 +92,16 @@ class WebExtPlugin {
             {
               artifactsDir: this.artifactsDir,
               browserConsole: this.browserConsole,
-              sourceDir: this.sourceDir,
-              target: this.target,
               chromiumBinary: this.chromiumBinary,
               chromiumProfile: this.chromiumProfile,
               firefox: this.firefox,
               firefoxProfile: this.firefoxProfile,
               keepProfileChanges: this.keepProfileChanges,
-              profileCreateIfMissing: this.profileCreateIfMissing,
-              startUrl: this.startUrl,
               noReload: true,
+              profileCreateIfMissing: this.profileCreateIfMissing,
+              sourceDir: this.sourceDir,
+              startUrl: this.startUrl,
+              target: this.target,
             },
             {}
           )
