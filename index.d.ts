@@ -12,6 +12,7 @@ export declare interface WebExtPluginOptions {
   outputFilename?: string;
   overwriteDest?: boolean;
   profileCreateIfMissing?: boolean;
+  selfHosted?: boolean;
   sourceDir?: string;
   startUrl?: string;
   target?: 'firefox-desktop' | 'firefox-android' | 'chromium';

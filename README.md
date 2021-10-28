@@ -82,6 +82,12 @@ module.exports = {
 
   Defaults to false.
 
+- `selfHosted` (optional) - If `true` declares that your extension will be
+  self-hosted and disables lint messages related to hosting on
+  addons.mozilla.org.
+
+  Defaults to `false`.
+
 - `sourceDir` (optional) - The folder where webpack is building your extension
   to.
   Typically this will be where you have configured `output.path` to point to.

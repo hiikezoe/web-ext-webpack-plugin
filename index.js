@@ -18,6 +18,7 @@ class WebExtPlugin {
     outputFilename,
     overwriteDest = false,
     profileCreateIfMissing,
+    selfHosted = false,
     sourceDir = process.cwd(),
     startUrl,
     target,
@@ -36,6 +37,7 @@ class WebExtPlugin {
     this.outputFilename = outputFilename;
     this.overwriteDest = overwriteDest;
     this.profileCreateIfMissing = profileCreateIfMissing;
+    this.selfHosted = selfHosted;
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
     this.target = target;
@@ -55,6 +57,7 @@ class WebExtPlugin {
             metadata: false,
             output: 'text',
             pretty: false,
+            selfHosted: this.selfHosted,
             sourceDir: this.sourceDir,
             verbose: false,
             warningsAsErrors: true,
