@@ -90,25 +90,23 @@ class WebExtPlugin {
           return;
         }
 
-        await webExt.cmd
-          .run(
-            {
-              artifactsDir: this.artifactsDir,
-              browserConsole: this.browserConsole,
-              chromiumBinary: this.chromiumBinary,
-              chromiumProfile: this.chromiumProfile,
-              firefox: this.firefox,
-              firefoxProfile: this.firefoxProfile,
-              keepProfileChanges: this.keepProfileChanges,
-              noReload: true,
-              profileCreateIfMissing: this.profileCreateIfMissing,
-              sourceDir: this.sourceDir,
-              startUrl: this.startUrl,
-              target: this.target,
-            },
-            {}
-          )
-          .then((runner) => (this.runner = runner));
+        this.runner = await webExt.cmd.run(
+          {
+            artifactsDir: this.artifactsDir,
+            browserConsole: this.browserConsole,
+            chromiumBinary: this.chromiumBinary,
+            chromiumProfile: this.chromiumProfile,
+            firefox: this.firefox,
+            firefoxProfile: this.firefoxProfile,
+            keepProfileChanges: this.keepProfileChanges,
+            noReload: true,
+            profileCreateIfMissing: this.profileCreateIfMissing,
+            sourceDir: this.sourceDir,
+            startUrl: this.startUrl,
+            target: this.target,
+          },
+          {}
+        );
 
         if (!this.runner) {
           return;
@@ -116,9 +114,17 @@ class WebExtPlugin {
 
         this.runner.registerCleanup(() => {
           this.runner = null;
+
+          if (compiler.watching && !compiler.watching.closed) {
+            compiler.watching.close((closeErr) => {
+              if (closeErr) {
+                console.error(closeErr);
+              }
+            });
+          }
         });
       } catch (err) {
-        console.log(err);
+        console.error(err);
       }
     };
 
