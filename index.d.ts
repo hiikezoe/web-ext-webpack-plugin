@@ -12,6 +12,7 @@ export declare interface WebExtPluginOptions {
   outputFilename?: string;
   overwriteDest?: boolean;
   profileCreateIfMissing?: boolean;
+  runLint?: boolean;
   selfHosted?: boolean;
   sourceDir?: string;
   startUrl?: string;

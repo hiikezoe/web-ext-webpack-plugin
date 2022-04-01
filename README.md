@@ -42,7 +42,8 @@ mode using `webpack -w`.
 - `buildPackage` (optional) - A boolean indicating if a zip file of the
   extension should be generated.
 
-  The name of the .zip file is taken from the name field in the extension manifest unless `outputFilename` is set.
+  The name of the .zip file is taken from the name field in the extension
+  manifest unless `outputFilename` is set.
 
   Defaults to false.
 
@@ -63,9 +64,13 @@ mode using `webpack -w`.
 
   Defaults to false.
 
-  See the notes for the [`--keep-profile-changes` flag](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run) from the `web-ext run` documentation.
-  Specifically, this should not be used together with a profile you later use for browsing.
-  It is, however, useful if you want to force the profile in a specific location to be written to (e.g. for testing out-of-disk space situations).
+  See the notes for the [`--keep-profile-changes`
+  flag](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run)
+  from the `web-ext run` documentation.
+  Specifically, this should not be used together with a profile you later use
+  for browsing.
+  It is, however, useful if you want to force the profile in a specific location
+  to be written to (e.g. for testing out-of-disk space situations).
 
 - `outputFilename` (optional) - The name of the .zip file to write when
   `buildPackage` is true.
@@ -77,7 +82,8 @@ mode using `webpack -w`.
   when `buildPackage` is true, should overwrite an existing package at the same
   location.
 
-  Without this option, web-ext will exit in error if the destination file already exists.
+  Without this option, web-ext will exit in error if the destination file
+  already exists.
 
   Defaults to false.
 
@@ -85,9 +91,15 @@ mode using `webpack -w`.
   profile specified by `firefoxProfile` should be created if it does not
   exist.
 
-  Note that if this is specified, `firefoxProfile` is treated as meaning a directory path (not a profile name).
+  Note that if this is specified, `firefoxProfile` is treated as meaning a
+  directory path (not a profile name).
 
   Defaults to false.
+
+- `runLint` (optional) - A boolean indicating if `web-ext lint` should
+  be run as part of building the extension.
+
+  Defaults to true.
 
 - `selfHosted` (optional) - If `true` declares that your extension will be
   self-hosted and disables lint messages related to hosting on

@@ -19,6 +19,7 @@ class WebExtPlugin {
     outputFilename,
     overwriteDest = false,
     profileCreateIfMissing,
+    runLint = true,
     selfHosted = false,
     startUrl,
     target,
@@ -37,6 +38,7 @@ class WebExtPlugin {
     this.outputFilename = outputFilename;
     this.overwriteDest = overwriteDest;
     this.profileCreateIfMissing = profileCreateIfMissing;
+    this.runLint = runLint;
     this.selfHosted = selfHosted;
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
@@ -50,22 +52,24 @@ class WebExtPlugin {
 
     const afterEmit = async (compilation) => {
       try {
-        await webExt.cmd.lint(
-          {
-            artifactsDir: this.artifactsDir,
-            boring: false,
-            metadata: false,
-            output: 'text',
-            pretty: false,
-            selfHosted: this.selfHosted,
-            sourceDir: this.sourceDir,
-            verbose: false,
-            warningsAsErrors: true,
-          },
-          {
-            shouldExitProgram: false,
-          }
-        );
+        if (this.runLint) {
+          await webExt.cmd.lint(
+            {
+              artifactsDir: this.artifactsDir,
+              boring: false,
+              metadata: false,
+              output: 'text',
+              pretty: false,
+              selfHosted: this.selfHosted,
+              sourceDir: this.sourceDir,
+              verbose: false,
+              warningsAsErrors: true,
+            },
+            {
+              shouldExitProgram: false,
+            }
+          );
+        }
 
         if (!this.watchMode) {
           if (this.buildPackage) {
