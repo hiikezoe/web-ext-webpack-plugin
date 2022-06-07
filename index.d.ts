@@ -15,7 +15,7 @@ export declare interface WebExtPluginOptions {
   runLint?: boolean;
   selfHosted?: boolean;
   sourceDir?: string;
-  startUrl?: string;
+  startUrl?: string | Array<string>;
   target?: 'firefox-desktop' | 'firefox-android' | 'chromium';
 }
 

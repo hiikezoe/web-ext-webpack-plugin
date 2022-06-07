@@ -114,7 +114,7 @@ mode using `webpack -w`.
 
   Defaults to the same folder as the `webpack.config.js` file.
 
-- `startUrl` (optional) - A URL to load on startup.
+- `startUrl` (optional) - A URL or array of URLs to load on startup.
 
 - `target` (optional) - One of `firefox-desktop`, `firefox-android`, or `chromium`.
 
