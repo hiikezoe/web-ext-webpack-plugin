@@ -1,6 +1,6 @@
 {
   "name": "web-ext-plugin",
-  "version": "1.8.1",
+  "version": "1.8.2",
   "description": "A webpack plugin for web-ext",
   "main": "index.js",
   "scripts": {
