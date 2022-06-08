@@ -116,7 +116,8 @@ mode using `webpack -w`.
 
 - `startUrl` (optional) - A URL or array of URLs to load on startup.
 
-- `target` (optional) - One of `firefox-desktop`, `firefox-android`, or `chromium`.
+- `target` (optional) - One of `firefox-desktop`, `firefox-android`, or
+  `chromium` or an array of such values.
 
   Defaults to `firefox-desktop`.
 

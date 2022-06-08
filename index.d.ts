@@ -1,5 +1,7 @@
 import { Compiler } from 'webpack';
 
+export type TargetType = 'firefox-desktop' | 'firefox-android' | 'chromium';
+
 export declare interface WebExtPluginOptions {
   artifactsDir?: string;
   browserConsole?: boolean;
@@ -16,7 +18,7 @@ export declare interface WebExtPluginOptions {
   selfHosted?: boolean;
   sourceDir?: string;
   startUrl?: string | Array<string>;
-  target?: 'firefox-desktop' | 'firefox-android' | 'chromium';
+  target?: TargetType | Array<TargetType>;
 }
 
 export default class WebExtPlugin {
