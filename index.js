@@ -1,11 +1,14 @@
 'use strict';
 
 import * as path from 'path';
+import { fileURLToPath } from 'url';
 import webExt from 'web-ext';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 const pluginName = 'WebExtPlugin';
 
-export class WebExtPlugin {
+export default class WebExtPlugin {
   constructor({
     sourceDir = process.cwd(),
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
@@ -141,5 +144,3 @@ export class WebExtPlugin {
     }
   }
 }
-
-export default WebExtPlugin;
