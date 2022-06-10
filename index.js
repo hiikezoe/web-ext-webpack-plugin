@@ -1,7 +1,7 @@
 'use strict';
 
-const path = require('path');
-const webExt = require('web-ext');
+import * as path from 'path';
+import webExt from 'web-ext';
 
 const pluginName = 'WebExtPlugin';
 

@@ -11,10 +11,10 @@ $ npm install --save-dev web-ext-plugin
 $ yarn add -D web-ext-plugin
 ```
 
-**webpack.config.js**
+**webpack.config.mjs**
 
 ```js
-const WebExtPlugin = require('web-ext-plugin');
+import WebExtPlugin from 'web-ext-plugin';
 
 module.exports = {
   plugins: [new WebExtPlugin({ sourceDir: 'extension-dist' })],
