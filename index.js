@@ -5,7 +5,7 @@ import webExt from 'web-ext';
 
 const pluginName = 'WebExtPlugin';
 
-class WebExtPlugin {
+export class WebExtPlugin {
   constructor({
     sourceDir = process.cwd(),
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
@@ -142,4 +142,4 @@ class WebExtPlugin {
   }
 }
 
-module.exports = WebExtPlugin;
+export default WebExtPlugin;
