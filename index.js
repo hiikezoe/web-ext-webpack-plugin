@@ -71,8 +71,8 @@ export default class WebExtPlugin {
           }
         );
 
-        // Abort on any lint errors unless we're in watch mode
-        if (!this.watchMode && result.summary.errors) {
+        // Abort on any lint errors
+        if (result.summary.errors) {
           throw new Error(result.errors[0].message);
         }
       }
