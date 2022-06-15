@@ -49,49 +49,53 @@ export default class WebExtPlugin {
   }
 
   apply(compiler) {
-    const watchRun = async (compiler) => {
+    const watchRun = async (_compiler) => {
       this.watchMode = true;
     };
 
-    const afterEmit = async (compilation) => {
-      try {
-        if (this.runLint) {
-          await webExt.cmd.lint(
+    const afterEmit = async (_compilation) => {
+      if (this.runLint) {
+        const result = await webExt.cmd.lint(
+          {
+            artifactsDir: this.artifactsDir,
+            boring: false,
+            metadata: false,
+            output: 'text',
+            pretty: false,
+            selfHosted: this.selfHosted,
+            sourceDir: this.sourceDir,
+            verbose: false,
+          },
+          {
+            shouldExitProgram: false,
+          }
+        );
+
+        // Abort on any lint errors unless we're in watch mode
+        if (!this.watchMode && result.summary.errors) {
+          throw new Error(result.errors[0].message);
+        }
+      }
+
+      if (!this.watchMode) {
+        if (this.buildPackage) {
+          await webExt.cmd.build(
             {
               artifactsDir: this.artifactsDir,
-              boring: false,
-              metadata: false,
-              output: 'text',
-              pretty: false,
-              selfHosted: this.selfHosted,
+              filename: this.outputFilename,
+              overwriteDest: this.overwriteDest,
               sourceDir: this.sourceDir,
-              verbose: false,
-              warningsAsErrors: true,
             },
             {
-              shouldExitProgram: false,
+              shouldExitProgram: true,
             }
           );
         }
 
-        if (!this.watchMode) {
-          if (this.buildPackage) {
-            await webExt.cmd.build(
-              {
-                artifactsDir: this.artifactsDir,
-                filename: this.outputFilename,
-                overwriteDest: this.overwriteDest,
-                sourceDir: this.sourceDir,
-              },
-              {
-                shouldExitProgram: true,
-              }
-            );
-          }
+        return;
+      }
 
-          return;
-        }
-
+      try {
         if (this.runner) {
           this.runner.reloadAllExtensions();
           return;
