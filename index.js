@@ -17,6 +17,7 @@ export default class WebExtPlugin {
     chromiumBinary,
     chromiumProfile,
     firefox,
+    firefoxPreview,
     firefoxProfile,
     keepProfileChanges,
     outputFilename,
@@ -36,6 +37,7 @@ export default class WebExtPlugin {
     this.chromiumBinary = chromiumBinary;
     this.chromiumProfile = chromiumProfile;
     this.firefox = firefox;
+    this.firefoxPreview = firefoxPreview;
     this.firefoxProfile = firefoxProfile;
     this.keepProfileChanges = keepProfileChanges;
     this.outputFilename = outputFilename;
@@ -82,6 +84,7 @@ export default class WebExtPlugin {
           await webExt.cmd.build(
             {
               artifactsDir: this.artifactsDir,
+              firefoxPreview: this.firefoxPreview,
               filename: this.outputFilename,
               overwriteDest: this.overwriteDest,
               sourceDir: this.sourceDir,
@@ -108,6 +111,7 @@ export default class WebExtPlugin {
             chromiumBinary: this.chromiumBinary,
             chromiumProfile: this.chromiumProfile,
             firefox: this.firefox,
+            firefoxPreview: this.firefoxPreview,
             firefoxProfile: this.firefoxProfile,
             keepProfileChanges: this.keepProfileChanges,
             noReload: true,

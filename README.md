@@ -56,6 +56,11 @@ mode using `webpack -w`.
 - `firefox` (optional) - A path to a specific version of Firefox to run.
   The value is an absolute path to the Firefox executable or an alias string.
 
+- `firefoxPreview` (optional) - Turn on developer preview features in Firefox. This option accepts multiple values, 
+  although it currently only supports the `mv3` value, which is also the default value.
+  The mv3 value allows developers to test their extensions with Firefox Manifest Version 3 support (without having to 
+  manually flipping the related preferences).
+
 - `firefoxProfile` (optional) - A specific Firefox profile to use.
   This may be either a profile name or the path to a profile directory.
   If this is not set a new profile is generated each time.
