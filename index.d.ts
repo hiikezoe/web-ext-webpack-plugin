@@ -9,6 +9,7 @@ export declare interface WebExtPluginOptions {
   chromiumBinary?: string;
   chromiumProfile?: string;
   firefox?: string;
+  firefoxPreview?: 'mv3';
   firefoxProfile?: string;
   keepProfileChanges?: boolean;
   outputFilename?: string;
