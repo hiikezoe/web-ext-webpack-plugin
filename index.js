@@ -27,6 +27,14 @@ export default class WebExtPlugin {
     selfHosted = false,
     startUrl,
     target,
+    adbBin,
+    adbHost,
+    adbPort,
+    adbDevice,
+    adbDiscoveryTimeout,
+    adbRemoveOldArtifacts,
+    firefoxApk,
+    firefoxApkComponent
   } = {}) {
     this.runner = null;
     this.watchMode = false;
@@ -48,6 +56,14 @@ export default class WebExtPlugin {
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
     this.target = target;
+    this.adbBin = adbBin;
+    this.adbHost = adbHost;
+    this.adbPort = adbPort;
+    this.adbDevice = adbDevice;
+    this.adbDiscoveryTimeout = adbDiscoveryTimeout;
+    this.adbRemoveOldArtifacts = adbRemoveOldArtifacts;
+    this.firefoxApk = firefoxApk;
+    this.firefoxApkComponent = firefoxApkComponent;
   }
 
   apply(compiler) {
@@ -119,6 +135,14 @@ export default class WebExtPlugin {
             sourceDir: this.sourceDir,
             startUrl: this.startUrl,
             target: this.target,
+            adbBin: this.adbBin,
+            adbHost: this.adbHost,
+            adbPort: this.adbPort,
+            adbDevice: this.adbDevice,
+            adbDiscoveryTimeout: this.adbDiscoveryTimeout,
+            adbRemoveOldArtifacts: this.adbRemoveOldArtifacts,
+            firefoxApk: this.firefoxApk,
+            firefoxApkComponent: this.firefoxApkComponent
           },
           {}
         );
