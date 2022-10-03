@@ -129,3 +129,23 @@ mode using `webpack -w`.
   Defaults to `firefox-desktop`.
 
   See the documentation for the `--target` option of [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run).
+
+### Android-specific options
+
+These options only apply when `target` includes `firefox-android`:
+
+- `adbDevice` (required) - Connect to the specified adb device name.
+
+- `adbBin` (optional) - Specify a custom path to the adb binary. Defaults to assuming `adb` executable is in `PATH`.
+
+- `adbHost` (optional) - Connect to adb on the specified host. Defaults to being discovered automatically.
+
+- `adbPort` (optional) - A string that specifies the port adb will connect to. Defaults to being discovered automatically.
+
+- `adbDiscoveryTimeout` (optional) - Number of milliseconds to wait before giving up. Defaults to `180000` (3 minutes).
+
+- `adbRemoveOldArtifacts` (optional) - If `true` it will always remove old artifacts files from the adb device when it exits. Defaults to `false`.
+
+- `firefoxApk` (optional) - Run a specific Firefox for Android APK. Example: `org.mozilla.fennec_aurora`. If unspecified and there is only one available, it will be selected automatically.
+
+- `firefoxApkComponent` (optional) - Run a specific Android Component (defaults to `<firefox-apk>/.App`).

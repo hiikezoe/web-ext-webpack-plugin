@@ -20,6 +20,14 @@ export declare interface WebExtPluginOptions {
   sourceDir?: string;
   startUrl?: string | Array<string>;
   target?: TargetType | Array<TargetType>;
+  adbBin?: string;
+  adbHost?: string;
+  adbPort?: string;
+  adbDevice?: string;
+  adbDiscoveryTimeout?: number;
+  adbRemoveOldArtifacts?: boolean;
+  firefoxApk?: string;
+  firefoxApkComponent?: string;
 }
 
 export default class WebExtPlugin {
