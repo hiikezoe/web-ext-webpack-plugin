@@ -132,7 +132,7 @@ mode using `webpack -w`.
 
 ### Android-specific options
 
-These options only apply when `target` is set to `firefox-android`:
+These options only apply when `target` includes `firefox-android`:
 
 - `adbDevice` (required) - Connect to the specified adb device name.
 
