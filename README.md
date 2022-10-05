@@ -108,6 +108,11 @@ mode using `webpack -w`.
 
   Defaults to true.
 
+- `lintWarningsAsErrors` (optional) - A boolean indicating if lint warnings
+  should be treated as errors. Only applies if `runLint` is true.
+
+  Defaults to false.
+
 - `selfHosted` (optional) - If `true` declares that your extension will be
   self-hosted and disables lint messages related to hosting on
   addons.mozilla.org.
