@@ -13,6 +13,7 @@ export declare interface WebExtPluginOptions {
   firefoxProfile?: string;
   ignoreFiles?: Array<string>;
   keepProfileChanges?: boolean;
+  noInput?: boolean;
   outputFilename?: string;
   overwriteDest?: boolean;
   pref?: { [key: string]: boolean | string | number };

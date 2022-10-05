@@ -21,6 +21,7 @@ export default class WebExtPlugin {
     firefoxProfile,
     ignoreFiles = [],
     keepProfileChanges,
+    noInput,
     outputFilename,
     overwriteDest = false,
     pref,
@@ -53,6 +54,7 @@ export default class WebExtPlugin {
     this.firefoxProfile = firefoxProfile;
     this.ignoreFiles = ignoreFiles;
     this.keepProfileChanges = keepProfileChanges;
+    this.noInput = noInput;
     this.outputFilename = outputFilename;
     this.overwriteDest = overwriteDest;
     this.pref = pref;
@@ -143,6 +145,7 @@ export default class WebExtPlugin {
             firefoxProfile: this.firefoxProfile,
             ignoreFiles: this.ignoreFiles
             keepProfileChanges: this.keepProfileChanges,
+            noInput: this.noInput ?? !this.watchMode,
             noReload: true,
             pref: this.pref,
             profileCreateIfMissing: this.profileCreateIfMissing,

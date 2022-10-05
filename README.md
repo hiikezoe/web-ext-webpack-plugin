@@ -93,6 +93,11 @@ mode using `webpack -w`.
   It is, however, useful if you want to force the profile in a specific location
   to be written to (e.g. for testing out-of-disk space situations).
 
+- `noInput` (optional) - If `true` disables all features that require standard
+  input.
+
+  Defaults to `true` in watch mode and `false` otherwise.
+
 - `outputFilename` (optional) - The name of the .zip file to write when
   `buildPackage` is true.
 
