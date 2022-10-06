@@ -30,6 +30,9 @@ mode using `webpack -w`.
 
 ## Options
 
+- `args` (optional) - Array of additional CLI options passed to the browser
+  binary.
+
 - `artifactsDir` (optional) - The folder where artifacts are built stored.
   Defaults to `<sourceDir>/web-ext-artifacts`.
   You typically won't need to alter this.
@@ -66,6 +69,20 @@ mode using `webpack -w`.
 - `firefoxProfile` (optional) - A specific Firefox profile to use.
   This may be either a profile name or the path to a profile directory.
   If this is not set a new profile is generated each time.
+
+- `ignoreFiles` (optional) - A list of glob patterns to define which files
+  should be ignored. If you specify relative paths, they will be relative to
+  your `sourceDir`.
+
+  By default, without the use of `ignoreFiles`, the following rules are applied:
+
+  - Any file ending in `.xpi` or `.zip` is ignored
+  - Any hidden file (one that starts with a dot) is ignored
+  - Any directory named `node_modules` is ignored
+
+  When you specify custom patterns using `ignoreFiles`, they are applied in
+  addition to the default patterns.
+
 - `keepProfileChanges` (optional) - A boolean value indicating if the profile
   specified by `firefoxProfile`.
 
@@ -78,6 +95,11 @@ mode using `webpack -w`.
   for browsing.
   It is, however, useful if you want to force the profile in a specific location
   to be written to (e.g. for testing out-of-disk space situations).
+
+- `noInput` (optional) - If `true` disables all features that require standard
+  input.
+
+  Defaults to `true` in watch mode and `false` otherwise.
 
 - `outputFilename` (optional) - The name of the .zip file to write when
   `buildPackage` is true.
@@ -94,6 +116,9 @@ mode using `webpack -w`.
 
   Defaults to false.
 
+- `pref` (optional) - A dictionary to customize any Firefox preference without
+  creating or modifying the profile.
+
 - `profileCreateIfMissing` (optional) - A boolean value indicating if the
   profile specified by `firefoxProfile` should be created if it does not
   exist.
@@ -107,6 +132,11 @@ mode using `webpack -w`.
   be run as part of building the extension.
 
   Defaults to true.
+
+- `lintWarningsAsErrors` (optional) - A boolean indicating if lint warnings
+  should be treated as errors. Only applies if `runLint` is true.
+
+  Defaults to false.
 
 - `selfHosted` (optional) - If `true` declares that your extension will be
   self-hosted and disables lint messages related to hosting on
@@ -136,16 +166,32 @@ These options only apply when `target` includes `firefox-android`:
 
 - `adbDevice` (required) - Connect to the specified adb device name.
 
-- `adbBin` (optional) - Specify a custom path to the adb binary. Defaults to assuming `adb` executable is in `PATH`.
+- `adbBin` (optional) - Specify a custom path to the adb binary.
 
-- `adbHost` (optional) - Connect to adb on the specified host. Defaults to being discovered automatically.
+  Defaults to assuming `adb` executable is in `PATH`.
 
-- `adbPort` (optional) - A string that specifies the port adb will connect to. Defaults to being discovered automatically.
+- `adbHost` (optional) - Connect to adb on the specified host.
 
-- `adbDiscoveryTimeout` (optional) - Number of milliseconds to wait before giving up. Defaults to `180000` (3 minutes).
+  Defaults to being discovered automatically.
 
-- `adbRemoveOldArtifacts` (optional) - If `true` it will always remove old artifacts files from the adb device when it exits. Defaults to `false`.
+- `adbPort` (optional) - A string that specifies the port adb will connect to.
 
-- `firefoxApk` (optional) - Run a specific Firefox for Android APK. Example: `org.mozilla.fennec_aurora`. If unspecified and there is only one available, it will be selected automatically.
+  Defaults to being discovered automatically.
 
-- `firefoxApkComponent` (optional) - Run a specific Android Component (defaults to `<firefox-apk>/.App`).
+- `adbDiscoveryTimeout` (optional) - Number of milliseconds to wait before
+  giving up.
+
+  Defaults to `180000` (3 minutes).
+
+- `adbRemoveOldArtifacts` (optional) - If `true` it will always remove old
+  artifacts files from the adb device when it exits.
+
+  Defaults to `false`.
+
+- `firefoxApk` (optional) - Run a specific Firefox for Android APK. Example:
+  `org.mozilla.fennec_aurora`. If unspecified and there is only one available,
+  it will be selected automatically.
+
+- `firefoxApkComponent` (optional) - Run a specific Android Component.
+
+  Defaults to `<firefox-apk>/.App`.

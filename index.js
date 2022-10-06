@@ -11,6 +11,7 @@ const pluginName = 'WebExtPlugin';
 export default class WebExtPlugin {
   constructor({
     sourceDir = process.cwd(),
+    args,
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
     browserConsole = false,
     buildPackage = false,
@@ -19,11 +20,15 @@ export default class WebExtPlugin {
     firefox,
     firefoxPreview,
     firefoxProfile,
+    ignoreFiles = [],
     keepProfileChanges,
+    noInput,
     outputFilename,
     overwriteDest = false,
+    pref,
     profileCreateIfMissing,
     runLint = true,
+    lintWarningsAsErrors = false,
     selfHosted = false,
     startUrl,
     target,
@@ -34,11 +39,12 @@ export default class WebExtPlugin {
     adbDiscoveryTimeout,
     adbRemoveOldArtifacts,
     firefoxApk,
-    firefoxApkComponent
+    firefoxApkComponent,
   } = {}) {
     this.runner = null;
     this.watchMode = false;
 
+    this.args = args;
     this.artifactsDir = artifactsDir;
     this.browserConsole = browserConsole;
     this.buildPackage = buildPackage;
@@ -47,11 +53,15 @@ export default class WebExtPlugin {
     this.firefox = firefox;
     this.firefoxPreview = firefoxPreview;
     this.firefoxProfile = firefoxProfile;
+    this.ignoreFiles = ignoreFiles;
     this.keepProfileChanges = keepProfileChanges;
+    this.noInput = noInput;
     this.outputFilename = outputFilename;
     this.overwriteDest = overwriteDest;
+    this.pref = pref;
     this.profileCreateIfMissing = profileCreateIfMissing;
     this.runLint = runLint;
+    this.lintWarningsAsErrors = lintWarningsAsErrors;
     this.selfHosted = selfHosted;
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
@@ -82,6 +92,7 @@ export default class WebExtPlugin {
             pretty: false,
             selfHosted: this.selfHosted,
             sourceDir: this.sourceDir,
+            ignoreFiles: this.ignoreFiles,
             verbose: false,
           },
           {
@@ -89,9 +100,11 @@ export default class WebExtPlugin {
           }
         );
 
-        // Abort on any lint errors
+        // Abort on any lint errors or warnings if lintWarningsAsErrors is true
         if (result.summary.errors) {
           throw new Error(result.errors[0].message);
+        } else if (this.lintWarningsAsErrors && result.summary.warnings) {
+          throw new Error(result.warnings[0].message);
         }
       }
 
@@ -104,6 +117,7 @@ export default class WebExtPlugin {
               filename: this.outputFilename,
               overwriteDest: this.overwriteDest,
               sourceDir: this.sourceDir,
+              ignoreFiles: this.ignoreFiles,
             },
             {
               shouldExitProgram: true,
@@ -122,6 +136,7 @@ export default class WebExtPlugin {
 
         this.runner = await webExt.cmd.run(
           {
+            args: this.args,
             artifactsDir: this.artifactsDir,
             browserConsole: this.browserConsole,
             chromiumBinary: this.chromiumBinary,
@@ -129,8 +144,11 @@ export default class WebExtPlugin {
             firefox: this.firefox,
             firefoxPreview: this.firefoxPreview,
             firefoxProfile: this.firefoxProfile,
+            ignoreFiles: this.ignoreFiles,
             keepProfileChanges: this.keepProfileChanges,
+            noInput: this.noInput ?? !this.watchMode,
             noReload: true,
+            pref: this.pref,
             profileCreateIfMissing: this.profileCreateIfMissing,
             sourceDir: this.sourceDir,
             startUrl: this.startUrl,
@@ -142,7 +160,7 @@ export default class WebExtPlugin {
             adbDiscoveryTimeout: this.adbDiscoveryTimeout,
             adbRemoveOldArtifacts: this.adbRemoveOldArtifacts,
             firefoxApk: this.firefoxApk,
-            firefoxApkComponent: this.firefoxApkComponent
+            firefoxApkComponent: this.firefoxApkComponent,
           },
           {}
         );
