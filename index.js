@@ -117,7 +117,7 @@ export default class WebExtPlugin {
               filename: this.outputFilename,
               overwriteDest: this.overwriteDest,
               sourceDir: this.sourceDir,
-              ignoreFiles: this.ignoreFiles
+              ignoreFiles: this.ignoreFiles,
             },
             {
               shouldExitProgram: true,
@@ -144,7 +144,7 @@ export default class WebExtPlugin {
             firefox: this.firefox,
             firefoxPreview: this.firefoxPreview,
             firefoxProfile: this.firefoxProfile,
-            ignoreFiles: this.ignoreFiles
+            ignoreFiles: this.ignoreFiles,
             keepProfileChanges: this.keepProfileChanges,
             noInput: this.noInput ?? !this.watchMode,
             noReload: true,
