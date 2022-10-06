@@ -22,6 +22,7 @@ export default class WebExtPlugin {
     keepProfileChanges,
     outputFilename,
     overwriteDest = false,
+    pref,
     profileCreateIfMissing,
     runLint = true,
     lintWarningsAsErrors = false,
@@ -36,7 +37,7 @@ export default class WebExtPlugin {
     adbDiscoveryTimeout,
     adbRemoveOldArtifacts,
     firefoxApk,
-    firefoxApkComponent
+    firefoxApkComponent,
   } = {}) {
     this.runner = null;
     this.watchMode = false;
@@ -52,6 +53,7 @@ export default class WebExtPlugin {
     this.keepProfileChanges = keepProfileChanges;
     this.outputFilename = outputFilename;
     this.overwriteDest = overwriteDest;
+    this.pref = pref;
     this.profileCreateIfMissing = profileCreateIfMissing;
     this.runLint = runLint;
     this.lintWarningsAsErrors = lintWarningsAsErrors;
@@ -137,6 +139,7 @@ export default class WebExtPlugin {
             firefoxProfile: this.firefoxProfile,
             keepProfileChanges: this.keepProfileChanges,
             noReload: true,
+            pref: this.pref,
             profileCreateIfMissing: this.profileCreateIfMissing,
             sourceDir: this.sourceDir,
             startUrl: this.startUrl,
@@ -149,7 +152,7 @@ export default class WebExtPlugin {
             adbDiscoveryTimeout: this.adbDiscoveryTimeout,
             adbRemoveOldArtifacts: this.adbRemoveOldArtifacts,
             firefoxApk: this.firefoxApk,
-            firefoxApkComponent: this.firefoxApkComponent
+            firefoxApkComponent: this.firefoxApkComponent,
           },
           {}
         );

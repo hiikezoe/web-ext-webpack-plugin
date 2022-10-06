@@ -94,6 +94,8 @@ mode using `webpack -w`.
 
   Defaults to false.
 
+- `pref` (optional) - A dictionary to customize any Firefox preference without creating or modifying the profile.
+
 - `profileCreateIfMissing` (optional) - A boolean value indicating if the
   profile specified by `firefoxProfile` should be created if it does not
   exist.

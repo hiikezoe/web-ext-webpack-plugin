@@ -14,9 +14,10 @@ export declare interface WebExtPluginOptions {
   keepProfileChanges?: boolean;
   outputFilename?: string;
   overwriteDest?: boolean;
+  pref?: { [key: string]: boolean | string | number };
   profileCreateIfMissing?: boolean;
   runLint?: boolean;
-  lintWarningsAsErrors?: boolean,
+  lintWarningsAsErrors?: boolean;
   selfHosted?: boolean;
   sourceDir?: string;
   startUrl?: string | Array<string>;
