@@ -130,6 +130,8 @@ mode using `webpack -w`.
 
   See the documentation for the `--target` option of [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run).
 
+- `args` (optional) - Array of additional CLI options passed to the Browser binary.
+
 ### Android-specific options
 
 These options only apply when `target` includes `firefox-android`:

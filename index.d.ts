@@ -20,6 +20,7 @@ export declare interface WebExtPluginOptions {
   sourceDir?: string;
   startUrl?: string | Array<string>;
   target?: TargetType | Array<TargetType>;
+  args?: Array<string>;
   adbBin?: string;
   adbHost?: string;
   adbPort?: string;

@@ -27,6 +27,7 @@ export default class WebExtPlugin {
     selfHosted = false,
     startUrl,
     target,
+    args,
     adbBin,
     adbHost,
     adbPort,
@@ -56,6 +57,7 @@ export default class WebExtPlugin {
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
     this.target = target;
+    this.args = args;
     this.adbBin = adbBin;
     this.adbHost = adbHost;
     this.adbPort = adbPort;
@@ -135,6 +137,7 @@ export default class WebExtPlugin {
             sourceDir: this.sourceDir,
             startUrl: this.startUrl,
             target: this.target,
+            args: this.args,
             adbBin: this.adbBin,
             adbHost: this.adbHost,
             adbPort: this.adbPort,
