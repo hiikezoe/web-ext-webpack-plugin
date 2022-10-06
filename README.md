@@ -66,6 +66,20 @@ mode using `webpack -w`.
 - `firefoxProfile` (optional) - A specific Firefox profile to use.
   This may be either a profile name or the path to a profile directory.
   If this is not set a new profile is generated each time.
+
+- `ignoreFiles` (optional) - A list of glob patterns to define which files
+  should be ignored. If you specify relative paths, they will be relative to
+  your `sourceDir`.
+
+  By default, without the use of `ignoreFiles`, the following rules are applied:
+
+  - Any file ending in `.xpi` or `.zip` is ignored
+  - Any hidden file (one that starts with a dot) is ignored
+  - Any directory named `node_modules` is ignored
+
+  When you specify custom patterns using `ignoreFiles`, they are applied in
+  addition to the default patterns.
+
 - `keepProfileChanges` (optional) - A boolean value indicating if the profile
   specified by `firefoxProfile`.
 

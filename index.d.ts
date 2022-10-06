@@ -11,6 +11,7 @@ export declare interface WebExtPluginOptions {
   firefox?: string;
   firefoxPreview?: ['mv3'];
   firefoxProfile?: string;
+  ignoreFiles?: Array<string>;
   keepProfileChanges?: boolean;
   outputFilename?: string;
   overwriteDest?: boolean;

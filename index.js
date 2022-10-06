@@ -19,6 +19,7 @@ export default class WebExtPlugin {
     firefox,
     firefoxPreview,
     firefoxProfile,
+    ignoreFiles = [],
     keepProfileChanges,
     outputFilename,
     overwriteDest = false,
@@ -50,6 +51,7 @@ export default class WebExtPlugin {
     this.firefox = firefox;
     this.firefoxPreview = firefoxPreview;
     this.firefoxProfile = firefoxProfile;
+    this.ignoreFiles = ignoreFiles;
     this.keepProfileChanges = keepProfileChanges;
     this.outputFilename = outputFilename;
     this.overwriteDest = overwriteDest;
@@ -88,6 +90,7 @@ export default class WebExtPlugin {
             pretty: false,
             selfHosted: this.selfHosted,
             sourceDir: this.sourceDir,
+            ignoreFiles: this.ignoreFiles,
             verbose: false,
           },
           {
@@ -112,6 +115,7 @@ export default class WebExtPlugin {
               filename: this.outputFilename,
               overwriteDest: this.overwriteDest,
               sourceDir: this.sourceDir,
+              ignoreFiles: this.ignoreFiles
             },
             {
               shouldExitProgram: true,
@@ -137,6 +141,7 @@ export default class WebExtPlugin {
             firefox: this.firefox,
             firefoxPreview: this.firefoxPreview,
             firefoxProfile: this.firefoxProfile,
+            ignoreFiles: this.ignoreFiles
             keepProfileChanges: this.keepProfileChanges,
             noReload: true,
             pref: this.pref,
