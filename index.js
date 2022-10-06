@@ -11,6 +11,7 @@ const pluginName = 'WebExtPlugin';
 export default class WebExtPlugin {
   constructor({
     sourceDir = process.cwd(),
+    args,
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
     browserConsole = false,
     buildPackage = false,
@@ -31,7 +32,6 @@ export default class WebExtPlugin {
     selfHosted = false,
     startUrl,
     target,
-    args,
     adbBin,
     adbHost,
     adbPort,
@@ -44,6 +44,7 @@ export default class WebExtPlugin {
     this.runner = null;
     this.watchMode = false;
 
+    this.args = args;
     this.artifactsDir = artifactsDir;
     this.browserConsole = browserConsole;
     this.buildPackage = buildPackage;
@@ -65,7 +66,6 @@ export default class WebExtPlugin {
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
     this.target = target;
-    this.args = args;
     this.adbBin = adbBin;
     this.adbHost = adbHost;
     this.adbPort = adbPort;
@@ -136,6 +136,7 @@ export default class WebExtPlugin {
 
         this.runner = await webExt.cmd.run(
           {
+            args: this.args,
             artifactsDir: this.artifactsDir,
             browserConsole: this.browserConsole,
             chromiumBinary: this.chromiumBinary,
@@ -152,7 +153,6 @@ export default class WebExtPlugin {
             sourceDir: this.sourceDir,
             startUrl: this.startUrl,
             target: this.target,
-            args: this.args,
             adbBin: this.adbBin,
             adbHost: this.adbHost,
             adbPort: this.adbPort,

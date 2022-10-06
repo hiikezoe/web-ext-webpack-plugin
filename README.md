@@ -30,6 +30,9 @@ mode using `webpack -w`.
 
 ## Options
 
+- `args` (optional) - Array of additional CLI options passed to the browser
+  binary.
+
 - `artifactsDir` (optional) - The folder where artifacts are built stored.
   Defaults to `<sourceDir>/web-ext-artifacts`.
   You typically won't need to alter this.
@@ -113,7 +116,8 @@ mode using `webpack -w`.
 
   Defaults to false.
 
-- `pref` (optional) - A dictionary to customize any Firefox preference without creating or modifying the profile.
+- `pref` (optional) - A dictionary to customize any Firefox preference without
+  creating or modifying the profile.
 
 - `profileCreateIfMissing` (optional) - A boolean value indicating if the
   profile specified by `firefoxProfile` should be created if it does not
@@ -156,24 +160,38 @@ mode using `webpack -w`.
 
   See the documentation for the `--target` option of [`web-ext run`](https://extensionworkshop.com/documentation/develop/web-ext-command-reference/#web-ext-run).
 
-- `args` (optional) - Array of additional CLI options passed to the Browser binary.
-
 ### Android-specific options
 
 These options only apply when `target` includes `firefox-android`:
 
 - `adbDevice` (required) - Connect to the specified adb device name.
 
-- `adbBin` (optional) - Specify a custom path to the adb binary. Defaults to assuming `adb` executable is in `PATH`.
+- `adbBin` (optional) - Specify a custom path to the adb binary.
 
-- `adbHost` (optional) - Connect to adb on the specified host. Defaults to being discovered automatically.
+  Defaults to assuming `adb` executable is in `PATH`.
 
-- `adbPort` (optional) - A string that specifies the port adb will connect to. Defaults to being discovered automatically.
+- `adbHost` (optional) - Connect to adb on the specified host.
 
-- `adbDiscoveryTimeout` (optional) - Number of milliseconds to wait before giving up. Defaults to `180000` (3 minutes).
+  Defaults to being discovered automatically.
 
-- `adbRemoveOldArtifacts` (optional) - If `true` it will always remove old artifacts files from the adb device when it exits. Defaults to `false`.
+- `adbPort` (optional) - A string that specifies the port adb will connect to.
 
-- `firefoxApk` (optional) - Run a specific Firefox for Android APK. Example: `org.mozilla.fennec_aurora`. If unspecified and there is only one available, it will be selected automatically.
+  Defaults to being discovered automatically.
 
-- `firefoxApkComponent` (optional) - Run a specific Android Component (defaults to `<firefox-apk>/.App`).
+- `adbDiscoveryTimeout` (optional) - Number of milliseconds to wait before
+  giving up.
+
+  Defaults to `180000` (3 minutes).
+
+- `adbRemoveOldArtifacts` (optional) - If `true` it will always remove old
+  artifacts files from the adb device when it exits.
+
+  Defaults to `false`.
+
+- `firefoxApk` (optional) - Run a specific Firefox for Android APK. Example:
+  `org.mozilla.fennec_aurora`. If unspecified and there is only one available,
+  it will be selected automatically.
+
+- `firefoxApkComponent` (optional) - Run a specific Android Component.
+
+  Defaults to `<firefox-apk>/.App`.

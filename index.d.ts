@@ -3,6 +3,7 @@ import { Compiler } from 'webpack';
 export type TargetType = 'firefox-desktop' | 'firefox-android' | 'chromium';
 
 export declare interface WebExtPluginOptions {
+  args?: Array<string>;
   artifactsDir?: string;
   browserConsole?: boolean;
   buildPackage?: boolean;
@@ -24,7 +25,6 @@ export declare interface WebExtPluginOptions {
   sourceDir?: string;
   startUrl?: string | Array<string>;
   target?: TargetType | Array<TargetType>;
-  args?: Array<string>;
   adbBin?: string;
   adbHost?: string;
   adbPort?: string;
