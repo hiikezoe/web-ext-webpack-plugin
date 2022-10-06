@@ -24,6 +24,7 @@ export default class WebExtPlugin {
     overwriteDest = false,
     profileCreateIfMissing,
     runLint = true,
+    lintWarningsAsErrors = false,
     selfHosted = false,
     startUrl,
     target,
@@ -53,6 +54,7 @@ export default class WebExtPlugin {
     this.overwriteDest = overwriteDest;
     this.profileCreateIfMissing = profileCreateIfMissing;
     this.runLint = runLint;
+    this.lintWarningsAsErrors = lintWarningsAsErrors;
     this.selfHosted = selfHosted;
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
@@ -91,9 +93,11 @@ export default class WebExtPlugin {
           }
         );
 
-        // Abort on any lint errors
+        // Abort on any lint errors or warnings if lintWarningsAsErrors is true
         if (result.summary.errors) {
           throw new Error(result.errors[0].message);
+        } else if (this.lintWarningsAsErrors && result.summary.warnings) {
+          throw new Error(result.warnings[0].message);
         }
       }
 
