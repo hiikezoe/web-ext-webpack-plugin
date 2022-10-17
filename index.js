@@ -87,6 +87,7 @@ export default class WebExtPlugin {
           {
             artifactsDir: this.artifactsDir,
             boring: false,
+            firefoxPreview: this.firefoxPreview,
             metadata: false,
             output: 'text',
             pretty: false,
