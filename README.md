@@ -42,6 +42,11 @@ mode using `webpack -w`.
 
   Defaults to false.
 
+- `devtools` (optional) - A boolean indicating if DevTools
+  should be shown on load. Requires Firefox 106 and later.
+
+  Defaults to false.
+
 - `buildPackage` (optional) - A boolean indicating if a zip file of the
   extension should be generated.
 
