@@ -14,10 +14,10 @@ export default class WebExtPlugin {
     args,
     artifactsDir = path.join(sourceDir, 'web-ext-artifacts'),
     browserConsole = false,
-    devtools = false,
     buildPackage = false,
     chromiumBinary,
     chromiumProfile,
+    devtools = false,
     firefox,
     firefoxPreview,
     firefoxProfile,
@@ -48,10 +48,10 @@ export default class WebExtPlugin {
     this.args = args;
     this.artifactsDir = artifactsDir;
     this.browserConsole = browserConsole;
-    this.devtools = devtools;
     this.buildPackage = buildPackage;
     this.chromiumBinary = chromiumBinary;
     this.chromiumProfile = chromiumProfile;
+    this.devtools = devtools;
     this.firefox = firefox;
     this.firefoxPreview = firefoxPreview;
     this.firefoxProfile = firefoxProfile;
@@ -142,9 +142,9 @@ export default class WebExtPlugin {
             args: this.args,
             artifactsDir: this.artifactsDir,
             browserConsole: this.browserConsole,
-            devtools: this.devtools,
             chromiumBinary: this.chromiumBinary,
             chromiumProfile: this.chromiumProfile,
+            devtools: this.devtools,
             firefox: this.firefox,
             firefoxPreview: this.firefoxPreview,
             firefoxProfile: this.firefoxProfile,

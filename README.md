@@ -42,11 +42,6 @@ mode using `webpack -w`.
 
   Defaults to false.
 
-- `devtools` (optional) - A boolean indicating if DevTools
-  should be shown on load. Requires Firefox 106 and later.
-
-  Defaults to false.
-
 - `buildPackage` (optional) - A boolean indicating if a zip file of the
   extension should be generated.
 
@@ -60,6 +55,11 @@ mode using `webpack -w`.
   alias string.
 
 - `chromiumProfile` (optional) - A path to a custom Chromium profile to use.
+
+- `devtools` (optional) - A boolean indicating if DevTools
+  should be shown on load. Requires Firefox 106 and later.
+
+  Defaults to false.
 
 - `firefox` (optional) - A path to a specific version of Firefox to run.
   The value is an absolute path to the Firefox executable or an alias string.

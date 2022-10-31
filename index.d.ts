@@ -6,10 +6,10 @@ export declare interface WebExtPluginOptions {
   args?: Array<string>;
   artifactsDir?: string;
   browserConsole?: boolean;
-  devtools?: boolean;
   buildPackage?: boolean;
   chromiumBinary?: string;
   chromiumProfile?: string;
+  devtools?: boolean;
   firefox?: string;
   firefoxPreview?: ['mv3'];
   firefoxProfile?: string;
