@@ -159,7 +159,7 @@ mode using `webpack -w`.
   If multiple fields are present in the object, they will be treated as an "and" condition, allowing specific errors to be ignored.
   Only applies if `runLint` is true.
 
-  Defaults to false.
+  Defaults to [] (empty array).
 
 - `selfHosted` (optional) - If `true` declares that your extension will be
   self-hosted and disables lint messages related to hosting on
