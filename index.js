@@ -126,21 +126,11 @@ export default class WebExtPlugin {
         }
         
         if (this.filterLintFailures || this.ignoreKnownChromeLintFailures) {
-          for (const e of lintErrors) {
-            console.log(e)
-            for (const f of this.filterLintFailures) {
-              if (checkFilterMatch(f, e)){
-                //remove the error
-                console.log("removing ")
-                console.log(e)
-                let i = lintErrors.indexOf(e)
-                console.log(i)
-                lintErrors = lintErrors.splice(i, 1);
-                lintSummary.errors -= 1;
-              }
-            }
+          for (const filter of this.filterLintFailures) {
+            lintErrors = lintErrors.filter((value, index) =>
+              !checkFilterMatch(filter, value)
+            )
           }
-          console.log(lintErrors)
         }
 
 
