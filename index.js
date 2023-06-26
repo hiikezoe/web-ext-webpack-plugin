@@ -30,6 +30,8 @@ export default class WebExtPlugin {
     profileCreateIfMissing,
     runLint = true,
     lintWarningsAsErrors = false,
+    ignoreKnownChromeLintFailures = false,
+    filterLintFailures = [],
     selfHosted = false,
     startUrl,
     target,
@@ -64,6 +66,8 @@ export default class WebExtPlugin {
     this.profileCreateIfMissing = profileCreateIfMissing;
     this.runLint = runLint;
     this.lintWarningsAsErrors = lintWarningsAsErrors;
+    this.ignoreKnownChromeLintFailures = ignoreKnownChromeLintFailures;
+    this.filterLintFailures = filterLintFailures;
     this.selfHosted = selfHosted;
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
@@ -103,10 +107,47 @@ export default class WebExtPlugin {
           }
         );
 
+        let lintSummary = result.summary
+        let lintErrors = result.errors;
+
+        if (this.lintWarningsAsErrors) {
+          lintSummary.errors += lintSummary.warnings;
+          lintSummary.warnings = 0;
+          lintErrors.push(...result.warnings)
+        }
+
+        function checkFilterMatch(filter, message) {
+          for (const field of Object.keys(filter)) {
+            if (!field || message[field] !== filter[field]) {
+              return false;
+            }
+          }
+          return true;
+        }
+        
+        if (this.filterLintFailures || this.ignoreKnownChromeLintFailures) {
+          for (const e of lintErrors) {
+            console.log(e)
+            for (const f of this.filterLintFailures) {
+              if (checkFilterMatch(f, e)){
+                //remove the error
+                console.log("removing ")
+                console.log(e)
+                let i = lintErrors.indexOf(e)
+                console.log(i)
+                lintErrors = lintErrors.splice(i, 1);
+                lintSummary.errors -= 1;
+              }
+            }
+          }
+          console.log(lintErrors)
+        }
+
+
         // Abort on any lint errors or warnings if lintWarningsAsErrors is true
-        if (result.summary.errors) {
-          throw new Error(result.errors[0].message);
-        } else if (this.lintWarningsAsErrors && result.summary.warnings) {
+        if (lintSummary.errors) {
+          throw new Error(lintErrors[0].message);
+        } else if (this.lintWarningsAsErrors && lintSummary.warnings) {
           throw new Error(result.warnings[0].message);
         }
       }

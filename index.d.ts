@@ -2,6 +2,12 @@ import { Compiler } from 'webpack';
 
 export type TargetType = 'firefox-desktop' | 'firefox-android' | 'chromium';
 
+export type LintMatcher = {
+  code?: string;
+  message?: string;
+  file?: string;
+}
+
 export declare interface WebExtPluginOptions {
   args?: Array<string>;
   artifactsDir?: string;
@@ -22,6 +28,8 @@ export declare interface WebExtPluginOptions {
   profileCreateIfMissing?: boolean;
   runLint?: boolean;
   lintWarningsAsErrors?: boolean;
+  ignoreKnownChromeLintFailures?:boolean;
+  filterLintFailures?: Array<LintMatcher>;
   selfHosted?: boolean;
   sourceDir?: string;
   startUrl?: string | Array<string>;

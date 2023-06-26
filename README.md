@@ -143,6 +143,24 @@ mode using `webpack -w`.
 
   Defaults to false.
 
+- `ignoreKnownChromeLintFailures` (optional) - A boolean indicating whether lint errors known to fail when trying to check a chrome extension should be ignored. Only applies if `runLint` is true.
+
+  Defaults to false.
+
+- `filterLintFailures` (optional) - An array of objects that will be used to selectively ignore lint errors that match. An example of these objects looks like this:
+  ```
+  {
+    code?: string;
+    message?: string;
+    file?: string;
+  }
+  ```
+  If any of the fields are present, they will be matched against linter errors found and will be used to remove them.
+  If multiple fields are present in the object, they will be treated as an "and" condition, allowing specific errors to be ignored.
+  Only applies if `runLint` is true.
+
+  Defaults to false.
+
 - `selfHosted` (optional) - If `true` declares that your extension will be
   self-hosted and disables lint messages related to hosting on
   addons.mozilla.org.
