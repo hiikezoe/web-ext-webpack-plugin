@@ -128,6 +128,8 @@ export default class WebExtPlugin {
 
         if (this.ignoreKnownChromeLintFailures) {
           //add known failures caused by differences in chrome and firefox manifests
+          
+          //https://github.com/mozilla/web-ext/issues/2532
           this.filterLintFailures.push({
             code: "MANIFEST_FIELD_UNSUPPORTED",
             message: '"/background" is in an unsupported format.'
