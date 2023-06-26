@@ -124,8 +124,16 @@ export default class WebExtPlugin {
           }
           return true;
         }
+
+        if (this.ignoreKnownChromeLintFailures) {
+          //add known failures caused by differences in chrome and firefox manifests
+          this.filterLintFailures.push({
+            code: "MANIFEST_FIELD_UNSUPPORTED",
+            message: '"/background" is in an unsupported format.'
+          });
+        }
         
-        if (this.filterLintFailures || this.ignoreKnownChromeLintFailures) {
+        if (this.filterLintFailures) {
           for (const filter of this.filterLintFailures) {
             lintErrors = lintErrors.filter((value, index) =>
               !checkFilterMatch(filter, value)
