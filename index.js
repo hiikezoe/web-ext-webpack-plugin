@@ -110,6 +110,7 @@ export default class WebExtPlugin {
         let lintSummary = result.summary
         let lintErrors = result.errors;
 
+        //if lintWarningsAsErrors is true include those values too
         if (this.lintWarningsAsErrors) {
           lintSummary.errors += lintSummary.warnings;
           lintSummary.warnings = 0;
@@ -145,8 +146,6 @@ export default class WebExtPlugin {
         // Abort on any lint errors or warnings if lintWarningsAsErrors is true
         if (lintSummary.errors) {
           throw new Error(lintErrors[0].message);
-        } else if (this.lintWarningsAsErrors && lintSummary.warnings) {
-          throw new Error(result.warnings[0].message);
         }
       }
 
