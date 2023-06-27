@@ -30,6 +30,8 @@ export default class WebExtPlugin {
     profileCreateIfMissing,
     runLint = true,
     lintWarningsAsErrors = false,
+    ignoreKnownChromeLintFailures = false,
+    filterLintFailures = [],
     selfHosted = false,
     startUrl,
     target,
@@ -64,6 +66,8 @@ export default class WebExtPlugin {
     this.profileCreateIfMissing = profileCreateIfMissing;
     this.runLint = runLint;
     this.lintWarningsAsErrors = lintWarningsAsErrors;
+    this.ignoreKnownChromeLintFailures = ignoreKnownChromeLintFailures;
+    this.filterLintFailures = filterLintFailures;
     this.selfHosted = selfHosted;
     this.sourceDir = path.resolve(__dirname, sourceDir);
     this.startUrl = startUrl;
@@ -103,11 +107,47 @@ export default class WebExtPlugin {
           }
         );
 
+        let lintSummary = result.summary
+        let lintErrors = result.errors;
+
+        //if lintWarningsAsErrors is true include those values too
+        if (this.lintWarningsAsErrors) {
+          lintSummary.errors += lintSummary.warnings;
+          lintSummary.warnings = 0;
+          lintErrors.push(...result.warnings)
+        }
+
+        function checkFilterMatch(filter, message) {
+          for (const field of Object.keys(filter)) {
+            if (!field || message[field] !== filter[field]) {
+              return false;
+            }
+          }
+          return true;
+        }
+
+        if (this.ignoreKnownChromeLintFailures) {
+          //add known failures caused by differences in chrome and firefox manifests
+          
+          //https://github.com/mozilla/web-ext/issues/2532
+          this.filterLintFailures.push({
+            code: "MANIFEST_FIELD_UNSUPPORTED",
+            message: '"/background" is in an unsupported format.'
+          });
+        }
+        
+        if (this.filterLintFailures) {
+          for (const filter of this.filterLintFailures) {
+            lintErrors = lintErrors.filter((value, index) =>
+              !checkFilterMatch(filter, value)
+            )
+          }
+        }
+
+
         // Abort on any lint errors or warnings if lintWarningsAsErrors is true
-        if (result.summary.errors) {
-          throw new Error(result.errors[0].message);
-        } else if (this.lintWarningsAsErrors && result.summary.warnings) {
-          throw new Error(result.warnings[0].message);
+        if (lintSummary.errors) {
+          throw new Error(lintErrors[0].message);
         }
       }
 
