@@ -30,7 +30,7 @@
     "web-ext": "^7.6.2"
   },
   "devDependencies": {
-    "@types/webpack": "^5.28.0"
+    "@types/webpack": "^5.28.1"
   },
   "prettier": {
     "singleQuote": true,
