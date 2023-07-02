@@ -142,6 +142,7 @@ export default class WebExtPlugin {
               !checkFilterMatch(filter, value)
             )
           }
+          lintSummary.errors = lintErrors.length
         }
 
 
