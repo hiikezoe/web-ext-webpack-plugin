@@ -119,7 +119,11 @@ export default class WebExtPlugin {
 
         function checkFilterMatch(filter, message) {
           for (const field of Object.keys(filter)) {
-            if (!field || message[field] !== filter[field]) {
+            if (filter[field] instanceof RegExp) {
+              if (!filter[field].test(message[field])) {
+                return false;
+              }
+            } else if (!field || message[field] !== filter[field]) {
               return false;
             }
           }
@@ -128,17 +132,22 @@ export default class WebExtPlugin {
 
         if (this.ignoreKnownChromeLintFailures) {
           //add known failures caused by differences in chrome and firefox manifests
-          
+
           //https://github.com/mozilla/web-ext/issues/2532
           this.filterLintFailures.push({
             code: "MANIFEST_FIELD_UNSUPPORTED",
-            message: '"/background" is in an unsupported format.'
+            message: '"/background/service_worker" is not supported.'
+          });
+          // https://developer.chrome.com/docs/extensions/mv3/declare_permissions/#permissions
+          this.filterLintFailures.push({
+            code: "MANIFEST_PERMISSIONS",
+            message: /^\/permissions: Invalid permissions "offscreen" at /
           });
         }
-        
+
         if (this.filterLintFailures) {
           for (const filter of this.filterLintFailures) {
-            lintErrors = lintErrors.filter((value, index) =>
+            lintErrors = lintErrors.filter((value) =>
               !checkFilterMatch(filter, value)
             )
           }
