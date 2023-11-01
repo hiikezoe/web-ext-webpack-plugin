@@ -294,7 +294,7 @@
   dependencies:
     "@types/node" "*"
 
-"@types/webpack@^5.28.1":
+"@types/webpack@^5.28.4":
   version "5.28.4"
   resolved "https://registry.yarnpkg.com/@types/webpack/-/webpack-5.28.4.tgz#2dcbf8afb238a3d25123649fc4946849fe029279"
   integrity sha512-sVIGIQdg0bNruxwQvpiNXaIXndScf+qTfYULLo2DI8urXgxC7f8Rw8aNHjjckdI3QaV3cRHqoHdCuBMMyUtGiw==
@@ -3364,7 +3364,7 @@ wcwidth@^1.0.0:
   dependencies:
     defaults "^1.0.3"
 
-web-ext@^7.6.2:
+web-ext@^7.8.0:
   version "7.8.0"
   resolved "https://registry.yarnpkg.com/web-ext/-/web-ext-7.8.0.tgz#710cd73af79e3ac26fd4883b8894a3f6fd692d5d"
   integrity sha512-ta+VjbNfK5q0pqRmrlH/DQMdJ89sAJFfgcvpqoUoe2gPxLu18zZ5mIakGvyjmfjrkJLOZ2NCNF7suj/qd6xaEQ==
