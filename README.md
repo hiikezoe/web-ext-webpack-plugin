@@ -156,7 +156,7 @@ mode using `webpack -w`.
   ```
   {
     code?: string;
-    message?: string;
+    message?: string | RegExp;
     file?: string;
   }
   ```
