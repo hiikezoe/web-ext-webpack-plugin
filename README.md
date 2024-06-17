@@ -16,7 +16,7 @@ $ yarn add -D web-ext-plugin
 ```js
 import WebExtPlugin from 'web-ext-plugin';
 
-module.exports = {
+export default {
   plugins: [new WebExtPlugin({ sourceDir: 'extension-dist' })],
 };
 ```
