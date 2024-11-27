@@ -107,14 +107,14 @@ export default class WebExtPlugin {
           }
         );
 
-        let lintSummary = result.summary
+        let lintSummary = result.summary;
         let lintErrors = result.errors;
 
         //if lintWarningsAsErrors is true include those values too
         if (this.lintWarningsAsErrors) {
           lintSummary.errors += lintSummary.warnings;
           lintSummary.warnings = 0;
-          lintErrors.push(...result.warnings)
+          lintErrors.push(...result.warnings);
         }
 
         function checkFilterMatch(filter, message) {
@@ -135,25 +135,24 @@ export default class WebExtPlugin {
 
           //https://github.com/mozilla/web-ext/issues/2532
           this.filterLintFailures.push({
-            code: "MANIFEST_FIELD_UNSUPPORTED",
-            message: '"/background/service_worker" is not supported.'
+            code: 'MANIFEST_FIELD_UNSUPPORTED',
+            message: '"/background/service_worker" is not supported.',
           });
           // https://developer.chrome.com/docs/extensions/mv3/declare_permissions/#permissions
           this.filterLintFailures.push({
-            code: "MANIFEST_PERMISSIONS",
-            message: /^\/permissions: Invalid permissions "offscreen" at /
+            code: 'MANIFEST_PERMISSIONS',
+            message: /^\/permissions: Invalid permissions "offscreen" at /,
           });
         }
 
         if (this.filterLintFailures) {
           for (const filter of this.filterLintFailures) {
-            lintErrors = lintErrors.filter((value) =>
-              !checkFilterMatch(filter, value)
-            )
+            lintErrors = lintErrors.filter(
+              (value) => !checkFilterMatch(filter, value)
+            );
           }
-          lintSummary.errors = lintErrors.length
+          lintSummary.errors = lintErrors.length;
         }
-
 
         // Abort on any lint errors or warnings if lintWarningsAsErrors is true
         if (lintSummary.errors) {
@@ -183,7 +182,9 @@ export default class WebExtPlugin {
 
       try {
         if (this.runner) {
-          this.runner.reloadAllExtensions();
+          this.runner
+            .reloadExtensionBySourceDir(this.sourceDir)
+            .catch((err) => console.error(err));
           return;
         }
 
