@@ -10,7 +10,7 @@ importers:
     dependencies:
       web-ext:
         specifier: ^8.0.0
-        version: 8.7.0
+        version: 8.7.1
     devDependencies:
       '@types/webpack':
         specifier: 5.28.5
@@ -148,8 +148,8 @@ packages:
   '@types/node@22.10.0':
     resolution: {integrity: sha512-XC70cRZVElFHfIUB40FgZOBbgJYFKKMa5nb9lxcwYstFG/Mi+/Y0bGS+rs6Dmhmkpq4pnNiLiuZAbc02YCOnmA==}
 
-  '@types/node@22.15.21':
-    resolution: {integrity: sha512-EV/37Td6c+MgKAbkcLG6vqZ2zEYHD7bvSrzqqs2RIhbA6w3x+Dqz8MZM3sP6kGTeLrdoOgKZe+Xja7tUB2DNkQ==}
+  '@types/node@22.15.29':
+    resolution: {integrity: sha512-LNdjOkUDlU1RZb8e1kOIUpN1qQUlzGkEtbVNo53vbrwDg5om6oduhm4SiUaPW5ASTXhAiP0jInWG8Qx9fVlOeQ==}
 
   '@types/webpack@5.28.5':
     resolution: {integrity: sha512-wR87cgvxj3p6D0Crt1r5avwqffqPXUkNlnQ1mjU93G7gCuFjufZR4I6j8cz5g1F1tTYpfOOFvly+cmIQwL9wvw==}
@@ -230,8 +230,8 @@ packages:
     engines: {node: '>=0.4.0'}
     hasBin: true
 
-  addons-linter@7.12.0:
-    resolution: {integrity: sha512-nvVnLqZvLCtPlvLiiJx8s217k5UvXOMQ/Y2qDutBXu8I8CK3pL6uLr5KvZan4eqEY1c1iHekvb3fnvf86a/4fA==}
+  addons-linter@7.13.0:
+    resolution: {integrity: sha512-PCtnZtFfMw+7NSwHEsXPxlUC37ixvx4WBMUbT3T2WQ4N002lATRJQD4ixIXYbRNMDESrC8H2H91ReEE5jmS+Qg==}
     engines: {node: '>=18.0.0'}
     hasBin: true
 
@@ -1406,8 +1406,8 @@ packages:
   wcwidth@1.0.1:
     resolution: {integrity: sha512-XHPEwS0q6TaxcvG85+8EYkbiCux2XtWG2mkc47Ng2A77BQu9+DqIOJldST4HgPkuea7dvKSj5VgX3P1d4rW8Tg==}
 
-  web-ext@8.7.0:
-    resolution: {integrity: sha512-A0djEbKMcRhlWVQW0NMX8I8dQyEeXjnbWaDrJ/++v790BcCG5foHTDPdAC38pRfwGaToTqgehztzCiT+68kLYw==}
+  web-ext@8.7.1:
+    resolution: {integrity: sha512-erzzLemPynhFSmSavgQ92PJkFGlY0XQEMZOHbc85D2f+pKi2wk7edaAwa8GU1E9AbyVrdPaFk7wGLpRGfRw8zw==}
     engines: {node: '>=18.0.0', npm: '>=8.0.0'}
     hasBin: true
 
@@ -1643,7 +1643,7 @@ snapshots:
     dependencies:
       undici-types: 6.20.0
 
-  '@types/node@22.15.21':
+  '@types/node@22.15.29':
     dependencies:
       undici-types: 6.21.0
 
@@ -1660,7 +1660,7 @@ snapshots:
 
   '@types/yauzl@2.10.3':
     dependencies:
-      '@types/node': 22.15.21
+      '@types/node': 22.15.29
 
   '@ungap/structured-clone@1.3.0': {}
 
@@ -1756,7 +1756,7 @@ snapshots:
 
   acorn@8.14.1: {}
 
-  addons-linter@7.12.0:
+  addons-linter@7.13.0:
     dependencies:
       '@fluent/syntax': 0.19.0
       '@fregante/relaxed-json': 2.0.0
@@ -1930,7 +1930,7 @@ snapshots:
 
   chrome-launcher@1.2.0:
     dependencies:
-      '@types/node': 22.15.21
+      '@types/node': 22.15.29
       escape-string-regexp: 4.0.0
       is-wsl: 2.2.0
       lighthouse-logger: 2.0.1
@@ -2916,11 +2916,11 @@ snapshots:
     dependencies:
       defaults: 1.0.4
 
-  web-ext@8.7.0:
+  web-ext@8.7.1:
     dependencies:
       '@babel/runtime': 7.27.1
       '@devicefarmer/adbkit': 3.3.8
-      addons-linter: 7.12.0
+      addons-linter: 7.13.0
       camelcase: 8.0.0
       chrome-launcher: 1.2.0
       debounce: 1.2.1
