@@ -1005,8 +1005,8 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
-  node-forge@1.4.0:
-    resolution: {integrity: sha512-LarFH0+6VfriEhqMMcLX2F7SwSXeWwnEAJEsYm5QKWchiVYVvJyV9v7UDvUv+w5HO23ZpQTXDv/GxdDdMyOuoQ==}
+  node-forge@1.4.2:
+    resolution: {integrity: sha512-rRtAR5XLJ8gCKd9du4qrKAsgCG1ObGP4gLeNJMa4vYSeq4bmBMOJk5IHkrviBV0q7uoAJlVd8HEQYQSVUb4FGQ==}
     engines: {node: '>= 6.13.0'}
 
   node-releases@2.0.59:
@@ -1481,7 +1481,7 @@ snapshots:
       bluebird: 3.7.2
       commander: 9.5.0
       debug: 4.3.7(supports-color@8.1.1)
-      node-forge: 1.4.0
+      node-forge: 1.4.2
       split: 1.0.1
     transitivePeerDependencies:
       - supports-color
@@ -2446,7 +2446,7 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
-  node-forge@1.4.0: {}
+  node-forge@1.4.2: {}
 
   node-releases@2.0.59: {}
 
